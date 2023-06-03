@@ -8,6 +8,8 @@ COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt --no-cache-dir
 
+RUN pip3 install moviepy --no-cache-dir
+
 COPY . .
 
 WORKDIR /app/src

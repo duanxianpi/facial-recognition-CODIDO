@@ -7,6 +7,7 @@ from pathlib import Path
 import sys
 import time
 import psutil
+import moviepy.editor as mp
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]
@@ -85,13 +86,27 @@ pid = os.getpid()
 p = psutil.Process(pid)
 info_start = p.memory_full_info().uss/1024/1024
 start_time = time.time()
+
 main.main_entry(source,pkl_file,npz_file)
+
+if (Path(source).suffix[1:] in (vid_formats)):
+    video = mp.VideoFileClip(source)
+    audio = video.audio
+
+    # add sound
+    bg_video = mp.VideoFileClip(str(ROOT)+"/outputs/output/"+str(os.path.basename(source)))
+    final_video = bg_video.set_audio(audio)
+    final_video.write_videofile(str(ROOT)+"/outputs/"+str(os.path.basename(source)))
+
+    os.remove(str(ROOT)+"/outputs/output/"+str(os.path.basename(source)))
+    os.rmdir(str(ROOT)+"/outputs/output")
+
 over_time = time.time()
 info_end=p.memory_full_info().uss/1024/1024
 total_time = over_time - start_time
 
 with open(os.path.join(str(ROOT)+"/outputs", 'log'), 'w') as f:
-    f.write("Took"+str(info_end-info_start)+"MB, " + str(total_time) + "s")
+    f.write("Took "+str(info_end-info_start)+"MB, " + str(total_time) + "s")
 
 print("Step 6")
 
