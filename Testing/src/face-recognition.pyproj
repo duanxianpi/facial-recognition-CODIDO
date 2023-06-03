@@ -1,0 +1,116 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>f4dd8ad1-2e4a-4650-ad40-8eb1df895592</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>main.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>face-recognition</Name>
+    <RootNamespace>face-recognition</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <InterpreterId>CondaEnv|CondaEnv|yolov5-face</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="facenet.py" />
+    <Compile Include="face_recognition.py" />
+    <Compile Include="main.py" />
+    <Compile Include="models\common.py" />
+    <Compile Include="models\experimental.py" />
+    <Compile Include="models\yolo.py" />
+    <Compile Include="models\__init__.py" />
+    <Compile Include="utils\activations.py" />
+    <Compile Include="utils\autoanchor.py" />
+    <Compile Include="utils\aws\resume.py" />
+    <Compile Include="utils\aws\__init__.py" />
+    <Compile Include="utils\datasets.py" />
+    <Compile Include="utils\face_datasets.py" />
+    <Compile Include="utils\general.py" />
+    <Compile Include="utils\google_utils.py" />
+    <Compile Include="utils\infer_utils.py" />
+    <Compile Include="utils\loss.py" />
+    <Compile Include="utils\metrics.py" />
+    <Compile Include="utils\plots.py" />
+    <Compile Include="utils\torch_utils.py" />
+    <Compile Include="utils\wandb_logging\log_dataset.py" />
+    <Compile Include="utils\wandb_logging\wandb_utils.py" />
+    <Compile Include="utils\wandb_logging\__init__.py" />
+    <Compile Include="utils\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="models\" />
+    <Folder Include="models\__pycache__\" />
+    <Folder Include="npz\" />
+    <Folder Include="pkl\" />
+    <Folder Include="utils\" />
+    <Folder Include="utils\aws\" />
+    <Folder Include="utils\google_app_engine\" />
+    <Folder Include="utils\wandb_logging\" />
+    <Folder Include="utils\__pycache__\" />
+    <Folder Include="weights\" />
+    <Folder Include="weights\20180402-114759\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="models\blazeface.yaml" />
+    <Content Include="models\blazeface_fpn.yaml" />
+    <Content Include="models\yolov5l.yaml" />
+    <Content Include="models\yolov5l6.yaml" />
+    <Content Include="models\yolov5m.yaml" />
+    <Content Include="models\yolov5m6.yaml" />
+    <Content Include="models\yolov5n-0.5.yaml" />
+    <Content Include="models\yolov5n.yaml" />
+    <Content Include="models\yolov5n6.yaml" />
+    <Content Include="models\yolov5s.yaml" />
+    <Content Include="models\yolov5s6.yaml" />
+    <Content Include="models\__pycache__\common.cpython-310.pyc" />
+    <Content Include="models\__pycache__\experimental.cpython-310.pyc" />
+    <Content Include="models\__pycache__\yolo.cpython-310.pyc" />
+    <Content Include="models\__pycache__\__init__.cpython-310.pyc" />
+    <Content Include="npz\Database.npz" />
+    <Content Include="pkl\SVCmodel.pkl" />
+    <Content Include="test.jpg" />
+    <Content Include="utils\aws\mime.sh" />
+    <Content Include="utils\aws\userdata.sh" />
+    <Content Include="utils\google_app_engine\additional_requirements.txt" />
+    <Content Include="utils\google_app_engine\app.yaml" />
+    <Content Include="utils\google_app_engine\Dockerfile" />
+    <Content Include="utils\__pycache__\autoanchor.cpython-310.pyc" />
+    <Content Include="utils\__pycache__\datasets.cpython-310.pyc" />
+    <Content Include="utils\__pycache__\general.cpython-310.pyc" />
+    <Content Include="utils\__pycache__\google_utils.cpython-310.pyc" />
+    <Content Include="utils\__pycache__\loss.cpython-310.pyc" />
+    <Content Include="utils\__pycache__\metrics.cpython-310.pyc" />
+    <Content Include="utils\__pycache__\plots.cpython-310.pyc" />
+    <Content Include="utils\__pycache__\torch_utils.cpython-310.pyc" />
+    <Content Include="utils\__pycache__\__init__.cpython-310.pyc" />
+    <Content Include="weights\20180402-114759\20180402-114759.pb" />
+    <Content Include="weights\20180402-114759\model-20180402-114759.ckpt-275.data-00000-of-00001" />
+    <Content Include="weights\20180402-114759\model-20180402-114759.ckpt-275.index" />
+    <Content Include="weights\20180402-114759\model-20180402-114759.meta" />
+    <Content Include="weights\download_weights.sh" />
+    <Content Include="weights\yolov5m-face.pt" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="CondaEnv|CondaEnv|yolov5-face" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
