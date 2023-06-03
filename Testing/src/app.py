@@ -94,11 +94,11 @@ if (Path(source).suffix[1:] in (vid_formats)):
     audio = video.audio
 
     # add sound
-    bg_video = mp.VideoFileClip(str(ROOT)+"/outputs/output/"+str(os.path.basename(source)))
+    bg_video = mp.VideoFileClip(str(ROOT)+"/outputs/output/"+str(os.path.splitext(os.path.basename(source))[0])+".mp4")
     final_video = bg_video.set_audio(audio)
-    final_video.write_videofile(str(ROOT)+"/outputs/"+str(os.path.basename(source)))
+    final_video.write_videofile(str(ROOT)+"/outputs/"+str(os.path.splitext(os.path.basename(source))[0])+".mp4")
 
-    os.remove(str(ROOT)+"/outputs/output/"+str(os.path.basename(source)))
+    os.remove(str(ROOT)+"/outputs/output/"+str(os.path.splitext(os.path.basename(source))[0])+".mp4")
     os.rmdir(str(ROOT)+"/outputs/output")
 
 over_time = time.time()
