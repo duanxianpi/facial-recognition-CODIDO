@@ -11,7 +11,12 @@ ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 import face_recognition
 import torch
 
+
 def main_entry(pictue_path,svc_path,npz_path):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = face_recognition.load_model("weights/yolov5m-face.pt", device)
+
+    with open(os.path.join(str(ROOT)+"/outputs", 'log'), 'w') as f:
+        f.write(str(device))
+
     face_recognition.detect(model, pictue_path ,device,"outputs","output",True,True,False,svc_path,"weights/20180402-114759/20180402-114759.pb",npz_path)

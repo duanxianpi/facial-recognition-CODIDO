@@ -105,7 +105,7 @@ over_time = time.time()
 info_end=p.memory_full_info().uss/1024/1024
 total_time = over_time - start_time
 
-with open(os.path.join(str(ROOT)+"/outputs", 'log'), 'w') as f:
+with open(os.path.join(str(ROOT)+"/outputs", 'log'), 'a') as f:
     f.write("Took "+str(info_end-info_start)+"MB, " + str(total_time) + "s")
 
 print("Step 6")
